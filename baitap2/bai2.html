@@ -21,26 +21,51 @@
             <div class="col-6 form-group">
               <label for="">Mã Sinh Viên : </label>
               <input type="text" class="form-control" id="txtMaSV" />
+              <div
+                id="errorMaSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Tên Sinh Viên : </label>
               <input type="text" class="form-control" id="txtTenSV" />
+              <div
+                id="errorTenSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
           <div class="row">
             <div class="col-6 form-group">
               <label for="">Email : </label>
               <input type="text" class="form-control" id="txtEmail" />
+              <div
+                id="errorEmail"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Mật khẩu: </label>
-              <input type="text" class="form-control" id="txtPass" />
+              <input type="password" class="form-control" id="txtPass" />
+              <div
+                id="errorMatKhau"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
           <div class="row">
             <div class="col-6 form-group">
               <label for="">Ngày Sinh : </label>
               <input type="date" class="form-control" id="txtNgaySinh" />
+              <div
+                id="errorNgaySinh"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Khóa học: </label>
@@ -55,22 +80,48 @@
             <div class="col-4 form-group">
               <label for="">Điểm toán : </label>
               <input type="text" class="form-control" id="txtDiemToan" />
+              <div
+                id="errorDiemToan"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-4 form-group">
               <label for="">Điểm lý : </label>
               <input type="text" class="form-control" id="txtDiemLy" />
+              <div
+                id="errorDiemLy"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-4 form-group">
               <label for="">Điểm hóa : </label>
               <input type="text" class="form-control" id="txtDiemHoa" />
+              <div
+                id="errorDiemHoa"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
 
           <div class="form-group text-center">
-            <button class="btn btn-success">Thêm Sinh Viên</button>
+            <button id="btnThemSV" class="btn btn-success">
+              Thêm Sinh Viên
+            </button>
+            <button id="btnCapNhatSV" class="btn btn-warning">
+              Cập Nhật Sinh Viên
+            </button>
           </div>
         </div>
         <div class="col-8 mx-auto">
+          <input
+            class="form-control"
+            id="txtKeyWord"
+            placeholder="Search..."
+            type="text"
+          />
           <table class="table">
             <thead>
               <tr>
@@ -102,6 +153,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"
       ></script>
+      <script src="./models/validation.js"></script>
       <script src="./models/DSSV.js"></script>
       <script src="./models/SinhVien.js"></script>
       <script src="./controllers/main.js"></script>
