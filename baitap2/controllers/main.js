@@ -9,7 +9,7 @@ function getEle(id) {
   return document.getElementById(id);
 }
 
-function layThongTinSV() {
+function layThongTinSV(isAdd) {
   // Dom tới thẻ input lấy value
   var maSV = getEle("txtMaSV").value;
   var tenSV = getEle("txtTenSV").value;
@@ -26,19 +26,27 @@ function layThongTinSV() {
   var isValid = true;
 
   // Kiểm tra rỗng
-  isValid &=
-    validation.kiemTraRong(
-      maSV,
-      "errorMaSV",
-      "(*) Vui lòng nhập mã sinh viên"
-    ) &&
-    validation.kiemTraDoDaiKiTu(
-      maSV,
-      "errorMaSV",
-      "(*) Vui lòng nhập từ 4-10 kí tự",
-      4,
-      10
-    );
+  if (isAdd) {
+    isValid &=
+      validation.kiemTraRong(
+        maSV,
+        "errorMaSV",
+        "(*) Vui lòng nhập mã sinh viên"
+      ) &&
+      validation.kiemTraDoDaiKiTu(
+        maSV,
+        "errorMaSV",
+        "(*) Vui lòng nhập từ 4-10 kí tự",
+        4,
+        10
+      ) &&
+      validation.kiemTraMaSinhVienTonTai(
+        maSV,
+        "errorMaSV",
+        "(*) Mã sinh viên đã tồn tại",
+        dssv.arr
+      );
+  }
 
   isValid &=
     validation.kiemTraRong(
@@ -52,11 +60,13 @@ function layThongTinSV() {
       "Vui lòng nhập chuỗi kí tự"
     );
 
-  isValid &= validation.kiemTraRong(
-    email,
-    "errorEmail",
-    "(*) Vui lòng nhập email"
-  );
+  isValid &=
+    validation.kiemTraRong(email, "errorEmail", "(*) Vui lòng nhập email") &&
+    validation.kiemTraEmail(
+      email,
+      "errorEmail",
+      "(*) Vui lòng nhập đúng email"
+    );
 
   isValid &= validation.kiemTraRong(
     matKhau,
@@ -68,6 +78,12 @@ function layThongTinSV() {
     ngaySinh,
     "errorNgaySinh",
     "(*) Vui lòng nhập ngày sinh"
+  );
+
+  isValid &= validation.kiemTraKhoaHoc(
+    khSV,
+    "errorKhoaHoc",
+    "(*) Vui lòng chọn khóa học"
   );
 
   isValid &= validation.kiemTraRong(
